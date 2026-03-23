@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plywood Sheets</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 100px 20px 60px;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+   nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.3rem 0;
+  }
+}
+
+    .product {
+      background-color: #fbf1f1;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .product::first-line {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .btn {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-bottom: 30px;
+    }
+
+    .btn:hover {
+      background-color: #002244;
+    }
+
+    
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">BuildSource</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="materials.html">Materials</a></li>
+    <li><a href="find.html">Find Experts</a></li>
+    <li><a href="cart.html">Cart</a></li>
+
+  </ul>
+</nav>
+
+<div class="product">
+  🪚 MR (Moisture Resistant) Plywood<br>
+  Use: For areas with high humidity like bathrooms and kitchens<br>
+  Features: Water-resistant, termite-resistant<br>
+  Approx. Price (8mm, per 8x4 ft sheet): ₹1,000 – ₹1,500<br>
+  Note: Ideal for moisture-prone environments.<br>
+  <button class="btn" onclick="addToCart('mr01', 'MR Plywood', 1000, 'Greenply')">Add to Cart</button>
+</div>
+
+<div class="product">
+  🏠 BWR (Boiling Water Resistant) Plywood<br>
+  Use: Heavy-duty applications, exterior use<br>
+  Features: Highly water-resistant, durable<br>
+  Approx. Price (8mm, per 8x4 ft sheet): ₹1,800 – ₹2,500<br>
+  Note: Best for high moisture areas and outdoor furniture.<br>
+  <button class="btn" onclick="addToCart('bwr01', 'BWR Plywood', 1800, 'Century')">Add to Cart</button>
+</div>
+
+<div class="product">
+  🪑 BWP (Boiling Water Proof) Plywood<br>
+  Use: Marine plywood, heavy-duty external structures<br>
+  Features: Extremely water-resistant, high durability<br>
+  Approx. Price (12mm, per 8x4 ft sheet): ₹3,500 – ₹4,500<br>
+  Note: Suitable for boats, docks, and external constructions.<br>
+  <button class="btn" onclick="addToCart('bwp01', 'BWP Plywood', 3500, 'Kitply')">Add to Cart</button>
+</div>
+
+<div class="product">
+  🛋️ Commercial Plywood<br>
+  Use: Furniture, office workspaces<br>
+  Features: Standard-grade, easy to work with<br>
+  Approx. Price (6mm, per 8x4 ft sheet): ₹700 – ₹1,000<br>
+  Note: Cost-effective for interior applications.<br>
+  <button class="btn" onclick="addToCart('cp01', 'Commercial Plywood', 700, 'National Plywood')">Add to Cart</button>
+</div>
+
+<div class="product">
+  🏗️ Decorative Plywood<br>
+  Use: Interior applications like panelling, false ceilings<br>
+  Features: Pre-laminated, stylish finishes<br>
+  Approx. Price (6mm, per 8x4 ft sheet): ₹1,500 – ₹2,000<br>
+  Note: Available in various wood finishes for aesthetics.<br>
+  <button class="btn" onclick="addToCart('dp01', 'Decorative Plywood', 1500, 'Sarda Plywood')">Add to Cart</button>
+</div>
+
+<footer>
+  <p>&copy; 2025 BuildSource. All rights reserved.</p>
+</footer>
+
+<script>
+function isLoggedIn() {
+    return sessionStorage.getItem('isLoggedIn') === 'true';
+}
+
+function addToCart(product, price, brand) {
+    if (!isLoggedIn()) {
+        alert("⚠️ Please login or register before adding items to the cart.");
+        window.location.href = "login1.html";
+        return;
+    }
+
+    const id = product.toLowerCase().replace(/\s+/g, '-');
+    const img = 'img/default.jpg'; // Use actual image path if you have one
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id,
+            name: product,
+            price,
+            brand,
+            quantity: 1,
+            img
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(product + ' (' + brand + ') added to cart at ₹' + price);
+}
+</script>
+
+</body>
+</html>

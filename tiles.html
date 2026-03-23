@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tile Types</title>
+    <style>
+             body {
+      font-family: Arial, sans-serif;
+      margin: 100px 20px 60px;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+   nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.3rem 0;
+  }
+}
+
+    .product {
+      background-color: #fbf1f1;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .product::first-line {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .btn {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    .btn:hover {
+      background-color: #002244;
+    }
+
+  
+    </style>
+</head>
+<body>
+      <nav>
+  <div class="logo">BuildSource</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="materials.html">Materials</a></li>
+    <li><a href="find.html">Find Experts</a></li>
+    <li><a href="cart.html">Cart</a></li>
+    
+  </ul>
+</nav>  
+
+<p> 🏠 Ceramic Tiles
+    <br>
+    Application: Floors & walls (indoor)<br>
+    Features: Easy maintenance, affordable<br>
+    Approx. Price (per sq. ft): ₹30 – ₹60<br>
+    Note: Commonly used for kitchens and bathrooms.
+</p>
+<button class="btn" onclick="addToCart('Ceramic Tiles', 30, 'Kajaria')">Add to Cart</button>
+<br>
+
+<p> 🧱 Vitrified Tiles
+    <br>
+    Application: Living rooms, commercial spaces<br>
+    Features: Strong, low water absorption<br>
+    Approx. Price (per sq. ft): ₹60 – ₹120<br>
+    Note: Popular for durability and sleek finish.
+</p>
+<button class="btn" onclick="addToCart('Vitrified Tiles', 60, 'Somany')">Add to Cart</button>
+<br>
+
+<p> 🌿 Porcelain Tiles
+    <br>
+    Application: Indoors & outdoors<br>
+    Features: Dense, stain & water resistant<br>
+    Approx. Price (per sq. ft): ₹70 – ₹150<br>
+    Note: Premium version of ceramic tiles.
+</p>
+<button class="btn" onclick="addToCart('Porcelain Tiles', 70, 'Johnson')">Add to Cart</button>
+<br>
+
+<p> ✨ Marble Tiles
+    <br>
+    Application: Luxurious interiors<br>
+    Features: Natural veining, elegant appearance<br>
+    Approx. Price (per sq. ft): ₹100 – ₹250<br>
+    Note: Needs sealing and maintenance.
+</p>
+<button class="btn" onclick="addToCart('Marble Tiles', 100, 'Rajasthan Marble')">Add to Cart</button>
+<br>
+
+<p> 🧼 Mosaic Tiles
+    <br>
+    Application: Bathrooms, pools, artistic walls<br>
+    Features: Decorative, small size tiles<br>
+    Approx. Price (per sq. ft): ₹40 – ₹80<br>
+    Note: Often used for aesthetic patterns.
+</p>
+<button class="btn" onclick="addToCart('Mosaic Tiles', 40, 'DecorTile')">Add to Cart</button>
+<br>
+
+<p> 🔲 Cement Tiles
+    <br>
+    Application: Patios, vintage decor<br>
+    Features: Handcrafted, colorful<br>
+    Approx. Price (per sq. ft): ₹60 – ₹120<br>
+    Note: Slightly porous, needs sealing.
+</p>
+<button class="btn" onclick="addToCart('Cement Tiles', 60, 'Heritage Tiles')">Add to Cart</button>
+<br>
+
+<p> 🌞 Terracotta Tiles
+    <br>
+    Application: Outdoor areas, rustic floors<br>
+    Features: Porous, earthy finish<br>
+    Approx. Price (per sq. ft): ₹40 – ₹90<br>
+    Note: Traditional look, absorbs moisture.
+</p>
+<button class="btn" onclick="addToCart('Terracotta Tiles', 40, 'EarthTone')">Add to Cart</button>
+<script>
+function isLoggedIn() {
+    return sessionStorage.getItem('isLoggedIn') === 'true';
+}
+
+function addToCart(product, price, brand) {
+    if (!isLoggedIn()) {
+        alert("⚠️ Please login or register before adding items to the cart.");
+        window.location.href = "login1.html";
+        return;
+    }
+
+    const id = product.toLowerCase().replace(/\s+/g, '-');
+    const img = 'img/default.jpg'; // Use actual image path if you have one
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id,
+            name: product,
+            price,
+            brand,
+            quantity: 1,
+            img
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(product + ' (' + brand + ') added to cart at ₹' + price);
+}
+</script>
+
+</body>
+</html>

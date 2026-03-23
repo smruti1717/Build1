@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Find Experts | BuildSOURCE</title>
+  <link rel="stylesheet" href="styles.css" />
+  
+</head>
+<body>
+  <nav>
+    <div class="logo">
+      <img src="logo.png" alt="BuildSource Logo" />
+      BuildSource
+    </div>
+    <ul>
+      <li><a href="index.html">Home</a></li>
+      <li><a href="materials.html">Materials</a></li>
+      <li><a href="find.html">Find Experts</a></li>
+       <li><a href="cart.html">Cart</a></li>
+    </ul>
+  </nav>
+
+  <section id="find-experts" class="find-experts">
+    <h2>Find Trusted Experts</h2>
+    <p>Search for the best contractors and interior designers in your area.</p>
+    
+    <div class="tabs">
+      <button onclick="showProfession('contractor')">Contractors</button>
+      <button onclick="showProfession('interior')">Interior Designers</button>
+    </div>
+
+    <div class="filter">
+      <label for="areaSelect">Select Area:</label>
+      <select id="areaSelect" onchange="filterProfessionals()">
+        <option value="all">All Areas</option>
+        <option value="Kothrud">Kothrud</option>
+        <option value="Viman nagar">Viman Nagar</option>
+        <option value="Lohegaon">Lohegaon</option>
+        <option value="Wagholi">Wagholi</option>
+        <option value="Hinjewadi">Hinjewadi</option>
+      </select>
+    </div>
+
+    <div id="professionalList" class="professional-cards"></div>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 BuildSource. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const professionals = [
+      { name: "Ajay Constructions", area: "Kothrud", rating: 4.5, type: "contractor" },
+      { name: "BuildTech Mumbai", area: "Viman nagar", rating: 4.8, type: "contractor" },
+      { name: "InteriorVibe", area: "Lohegaon", rating: 4.7, type: "interior" },
+      { name: "Urban Walls", area: "Wagholi", rating: 4.2, type: "interior" },
+      { name: "SmartBuild", area: "Hinjewadi", rating: 4.9, type: "contractor" }
+    ];
+
+    let selectedProfession = "contractor";
+
+    function showProfession(type) {
+      selectedProfession = type;
+      filterProfessionals();
+    }
+
+    function filterProfessionals() {
+      const selectedArea = document.getElementById("areaSelect").value;
+      const container = document.getElementById("professionalList");
+      container.innerHTML = "";
+
+      const filtered = professionals.filter(p =>
+        p.type === selectedProfession &&
+        (selectedArea === "all" || p.area === selectedArea)
+      );
+
+      if (filtered.length === 0) {
+        container.innerHTML = "<p>No professionals found.</p>";
+        return;
+      }
+
+      filtered.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <h3>${p.name}</h3>
+          <p>Location: ${p.area}</p>
+          <p>Rating: ⭐ ${p.rating}</p>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    window.onload = filterProfessionals;
+  </script>
+</body>
+</html>

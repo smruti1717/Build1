@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Construction Aggregates</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: Arial, sans-serif;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+      padding-top: 100px; /* to offset fixed nav */
+      padding-bottom: 60px; /* to offset fixed footer */
+    }
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.3rem 0;
+  }
+}
+
+    .product {
+      background-color: #fbf1f1;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin: 2rem auto;
+      max-width: 600px;
+      font-size: 16px;
+    }
+    .product::first-line {
+      font-weight: bold;
+      font-size: 18px;
+    }
+    .btn {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+    }
+    .btn:hover {
+      background-color: #002244;
+    }
+
+    /* Footer */
+    footer {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 1rem 0;
+      font-size: 0.9rem;
+      color: #555;
+      z-index: 999;
+    }
+
+    /* Responsive Layout */
+    @media (max-width: 768px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+      nav ul {
+        flex-direction: column;
+        width: 100%;
+        margin-top: 0.5rem;
+      }
+      nav ul li {
+        margin: 0.5rem 0;
+      }
+      .product {
+        margin: 1.5rem 1rem;
+        max-width: none;
+      }
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+  <div class="logo">BuildSource</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="materials.html">Materials</a></li>
+    <li><a href="find.html">Find Experts</a></li>
+    <li><a href="cart.html">Cart</a></li>
+    
+  </ul>
+</nav>  
+<p>🪨 20mm Coarse Aggregate<br>
+Use: Concrete mix for slabs, beams, and foundations<br>
+Features: Crushed granite, good load-bearing capacity<br>
+Approx. Price (per ton): ₹800 – ₹1,200<br>
+Note: Widely used in RCC structures.</p>
+<button class="btn" onclick="addToCart('20mm Coarse Aggregate', 800, 'Local Quarry', 'img/20mm.jpg')">Add to Cart</button>
+
+<p>🪵 10mm Coarse Aggregate<br>
+Use: Finer concrete finishes, flooring, precast items<br>
+Features: Smaller stone size, smooth finish<br>
+Approx. Price (per ton): ₹850 – ₹1,250<br>
+Note: Preferred for thinner concrete layers.</p>
+<button class="btn" onclick="addToCart('10mm Coarse Aggregate', 850, 'Local Quarry', 'img/10mm.jpg')">Add to Cart</button>
+
+<p>🏖️ M Sand (Manufactured Sand)<br>
+Use: Replacement for river sand in concrete & plaster<br>
+Features: Uniform grain size, dust-free, eco-friendly<br>
+Approx. Price (per ton): ₹1,000 – ₹1,400<br>
+Note: Increasingly used in modern construction.</p>
+<button class="btn" onclick="addToCart('M Sand', 1000, 'Robo Sand', 'img/msand.jpg')">Add to Cart</button>
+
+<p>🌊 River Sand<br>
+Use: Plastering and masonry work<br>
+Features: Naturally smooth, fine texture<br>
+Approx. Price (per ton): ₹1,200 – ₹1,800<br>
+Note: Quality and availability vary regionally.</p>
+<button class="btn" onclick="addToCart('River Sand', 1200, 'Authorized Supplier', 'img/riversand.jpg')">Add to Cart</button>
+
+<p>🧱 Dust / Quarry Fines<br>
+Use: Paver block bed, filler material<br>
+Features: Fine powdery texture, cost-effective<br>
+Approx. Price (per ton): ₹500 – ₹800<br>
+Note: Should be used with proper compaction.</p>
+<button class="btn" onclick="addToCart('Dust / Quarry Fines', 500, 'Crusher Plant', 'img/quarrydust.jpg')">Add to Cart</button>
+
+<script>
+function isLoggedIn() {
+    return sessionStorage.getItem('isLoggedIn') === 'true';
+}
+
+function addToCart(product, price, brand) {
+    if (!isLoggedIn()) {
+        alert("⚠️ Please login or register before adding items to the cart.");
+        window.location.href = "login1.html";
+        return;
+    }
+
+    const id = product.toLowerCase().replace(/\s+/g, '-');
+    const img = 'img/default.jpg'; // Use actual image path if you have one
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id,
+            name: product,
+            price,
+            brand,
+            quantity: 1,
+            img
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(product + ' (' + brand + ') added to cart at ₹' + price);
+}
+</script>
+
+</body>
+</html>
+

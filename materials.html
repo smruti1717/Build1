@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BuildSOURCE</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    .features {
+      padding: 3rem 1.5rem;
+      background-color: #f4f4f4;
+      text-align: center;
+    }
+
+    .features h2 {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+
+    .features > p {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      color: #555;
+      max-width: 900px;
+      margin: 0 auto 2rem;
+    }
+
+    .cards-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 2rem;
+    }
+
+    .card {
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+      transition: transform 0.3s ease;
+      text-align: center;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+    }
+
+    .card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+    }
+
+    .card h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #333;
+      min-height: 48px;
+    }
+
+    .card p {
+      font-size: 1rem;
+      color: #777;
+      line-height: 1.4;
+      flex-grow: 1;
+      overflow: hidden;
+    }
+
+    .btn {
+      padding: 0.5rem 1rem;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin-top: auto;
+    }
+
+    .btn:hover {
+      background-color: #0056b3;
+    }
+
+    @media (max-width: 768px) {
+      .cards-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .card {
+        width: 90%;
+      }
+    }
+  </style>
+</head>
+<nav>
+  <div class="logo">
+    <img src="logo.png" alt="BuildSource Logo" />
+    BuildSource
+  </div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="materials.html">Materials</a></li>
+    <li><a href="find.html">Find Experts</a></li>
+    <li><a href="cart.html">Cart</a></li>
+   
+  </ul>
+</nav>
+
+<body>
+  
+  <section class="features" id="materials">
+    <h2>Explore Our Materials</h2>
+    <p>We offer a wide range of high-quality materials for every phase of your construction or renovation project. Browse through our categories to find the perfect match for your needs.</p>
+
+    <div class="cards-container">
+
+      <div class="card">
+        <img src="https://tse1.mm.bing.net/th?id=OIP.es_IqPXWYK_o82zQ979RKgHaHa&pid=Api&P=0&h=180" alt="Cement">
+        <h3>Cement</h3>
+        <p>Price: ₹450 per bag<br>Supplier: UltraTech Ltd.</p>
+        <a href="cement.html" class="btn">View Details</a>
+      </div>
+
+    <div class="card">
+      <img src="https://5.imimg.com/data5/YO/JR/MY-14594846/stainless-steel-rods.jpg" alt="Steel Rods">
+      <h3>Steel Rods</h3>
+      <p>Price Range: ₹450 - ₹2,800<br>Supplier: Tata Steel</p>
+      <a href="steelrods.html" class="btn" style="margin-top: 1rem;">View Details</a>
+    </div>
+
+
+      <div class="card">
+        <img src="http://previewcf.turbosquid.com/Preview/2014/07/11__22_09_51/Bricks_007.jpgd5f4858c-488b-4079-8323-140fad4ea4cdOriginal.jpg" alt="Bricks">
+        <h3>Bricks</h3>
+        <p>Price: ₹8 per brick<br>Supplier: Bharat Bricks</p>
+        <a href="bricks.html" class="btn" style="margin-top: 1rem;">View Details</a>
+      </div>
+
+      <div class="card">
+        <img src="https://www.ctdtiles.co.uk/images/product/large/b0038029.jpg" alt="Tiles">
+        <h3>Tiles</h3>
+        <p>Price Range: ₹25 – ₹400<br>Supplier: Kajaria Ceramics</p>
+        <a href="tiles.html" class="btn" style="margin-top: 1rem;">View Details</a>
+      </div>
+
+      <div class="card">
+        <img src="https://www.sunshinehomepaintingservice.com/blog/uploads/images/202303/image_870x_641ea8468b42c.jpg" alt="Paints">
+        <h3>Paints</h3>
+        <p>Click for details<br>Supplier: Asian Paints</p>
+        <a href="paint.html" class="btn">View Details</a>
+      </div>
+
+      <div class="card">
+        <img src="https://www.dfliq.net/wp-content/uploads/2017/07/How-to-Extend-the-Life-of-Your-Electric-Wire-and-Cable.jpg" alt="Electrical Wire">
+        <h3>Electrical Wire</h3>
+        <p>Price Range: ₹1,185 – ₹16,395<br>Supplier: Finolex</p>
+       <a href="electricwires.html" class="btn" style="margin-top: 1rem;">View Details</a>
+      </div>
+
+      <div class="card">
+        <img src="https://www.pipelife.com/content/dam/pipelife/lithuania/marketing/hero_doorpage_product/Pipelife-Robust.jpg/jcr:content/renditions/cq5dam.web.3000.3000.jpeg" alt="Water Pipes">
+        <h3>Water Pipes</h3>
+        <p>Price Range: ₹50 – ₹270/meter<br>Supplier: Astral Pipes</p>
+       <a href="waterpipes.html" class="btn" style="margin-top: 1rem;">View Details</a>
+      </div>
+
+      <div class="card">
+        <img src="https://www.familyhandyman.com/wp-content/uploads/2018/10/plywood-feat.jpg?w=1200" alt="Plywood Sheet">
+        <h3>Plywood Sheet</h3>
+        <p>Price Range: ₹38 – ₹75/sq ft<br>Supplier: Greenply Industries</p>
+        <a href="plywoodsheets.html" class="btn" style="margin-top: 1rem;">View Details</a>
+      </div>
+
+      <div class="card">
+        <img src="https://api.gharpedia.com/wp-content/uploads/2018/08/0302030005-03-Coarse-Aggregates.jpg" alt="Aggregates">
+        <h3>Aggregates</h3>
+        <p>Price Range: ₹700 – ₹1,050/ton<br>Supplier: Build Aggregates</p>
+        <a href="aggregates.html" class="btn" style="margin-top: 1rem;">View Details</a>
+      </div>
+
+    </div>
+
+  </section>
+  <script>
+  const addToCartButtons = document.querySelectorAll('.card button');
+
+  addToCartButtons.forEach(button => {
+    button.addEventListener('click', function () {
+      const card = this.closest('.card');
+      const name = card.querySelector('h3').innerText;
+      const priceText = card.querySelector('p').innerText;
+      const priceMatch = priceText.match(/₹(\d+)/);
+      const price = priceMatch ? parseInt(priceMatch[1]) : 0;
+      const img = card.querySelector('img').getAttribute('src');
+
+      const product = {
+        id: Date.now(),
+        name: name,
+        price: price,
+        quantity: 1,
+        img: img
+      };
+
+      let cart = JSON.parse(localStorage.getItem('cart')) || [];
+      cart.push(product);
+      localStorage.setItem('cart', JSON.stringify(cart));
+      alert(`${name} has been added to your cart!`);
+    });
+  });
+</script>
+
+ <footer>
+    <p>&copy; 2025 BuildSource. All rights reserved.</p>
+  </footer>
+</body>
+</html>

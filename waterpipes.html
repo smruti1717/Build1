@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Water Pipes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 100px 20px 60px;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.3rem 0;
+  }
+}
+
+
+    .product {
+      background-color: #fbf1f1;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .product::first-line {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .btn {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    .btn:hover {
+      background-color: #002244;
+    }
+
+  
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="logo">BuildSource</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="materials.html">Materials</a></li>
+    <li><a href="find.html">Find Experts</a></li>
+    <li><a href="cart.html">Cart</a></li>
+  </ul>
+</nav>
+
+<div class="product">
+  🚿 PVC Pipes (Polyvinyl Chloride)<br>
+  Use: Cold water plumbing, irrigation<br>
+  Features: Lightweight, affordable, non-corrosive<br>
+  Approx. Price (1 inch, per 3m): ₹120 – ₹200<br>
+  Note: Not suitable for hot water.<br>
+  <button class="btn" onclick="addToCart('pvc01', 'PVC Pipe', 120, 'Finolex')">Add to Cart</button>
+</div>
+
+<div class="product">
+  💧 CPVC Pipes (Chlorinated PVC)<br>
+  Use: Hot & cold water distribution<br>
+  Features: Heat-resistant, corrosion-free<br>
+  Approx. Price (1 inch, per 3m): ₹250 – ₹350<br>
+  Note: Ideal for residential plumbing.<br>
+  <button class="btn" onclick="addToCart('cpvc01', 'CPVC Pipe', 250, 'Ashirvad')">Add to Cart</button>
+</div>
+
+<div class="product">
+  🏡 UPVC Pipes (Unplasticized PVC)<br>
+  Use: Water supply and drainage<br>
+  Features: Rigid, chemical-resistant, lead-free<br>
+  Approx. Price (1 inch, per 3m): ₹150 – ₹220<br>
+  Note: Common in homes and apartments.<br>
+  <button class="btn" onclick="addToCart('upvc01', 'UPVC Pipe', 150, 'Prince')">Add to Cart</button>
+</div>
+
+<div class="product">
+  🏭 HDPE Pipes (High-Density Polyethylene)<br>
+  Use: Agriculture, municipal water supply<br>
+  Features: Flexible, durable, leak-proof<br>
+  Approx. Price (1 inch, per meter): ₹35 – ₹55<br>
+  Note: Good for long-distance underground piping.<br>
+  <button class="btn" onclick="addToCart('hdpe01', 'HDPE Pipe', 35, 'Supreme')">Add to Cart</button>
+</div>
+
+<div class="product">
+  🧰 PPR Pipes (Polypropylene Random Copolymer)<br>
+  Use: Hot & cold water systems<br>
+  Features: High pressure resistance, thermal insulation<br>
+  Approx. Price (1 inch, per meter): ₹40 – ₹60<br>
+  Note: Popular in industrial and commercial setups.<br>
+  <button class="btn" onclick="addToCart('ppr01', 'PPR Pipe', 40, 'Aquatherm')">Add to Cart</button>
+</div>
+
+<script>
+function isLoggedIn() {
+    return sessionStorage.getItem('isLoggedIn') === 'true';
+}
+
+function addToCart(product, price, brand) {
+    if (!isLoggedIn()) {
+        alert("⚠️ Please login or register before adding items to the cart.");
+        window.location.href = "login1.html";
+        return;
+    }
+
+    const id = product.toLowerCase().replace(/\s+/g, '-');
+    const img = 'img/default.jpg'; // Use actual image path if you have one
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id,
+            name: product,
+            price,
+            brand,
+            quantity: 1,
+            img
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(product + ' (' + brand + ') added to cart at ₹' + price);
+}
+</script>
+
+</body>
+</html>
+

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Steel Rods</title>
+  <style>
+    body {
+       body {
+      font-family: Arial, sans-serif;
+      margin: 100px 20px 60px;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+    nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.3rem 0;
+  }
+}
+
+    .product {
+      background-color: #fbf1f1;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .product::first-line {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .btn {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    .btn:hover {
+      background-color: #002244;
+    }
+
+  
+    }
+  </style>
+</head>
+<body>
+  <nav>
+  <div class="logo">BuildSource</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="materials.html">Materials</a></li>
+    <li><a href="find.html">Find Experts</a></li>
+    <li><a href="cart.html">Cart</a></li>
+    
+  </ul>
+</nav>  
+<p> 🏗️ Steel Rods for Construction
+  <br>
+  Product	Type	Approx. Price (Per Ton)
+  <br>Mild Steel (MS) Rods	General Purpose	₹35,000 – ₹45,000
+  <button class="btn" onclick="addToCart('Mild Steel Rods', 40000, 'Steel World')">Add to Cart</button>
+  
+  <br>TMT Bars	High Strength	₹50,000 – ₹70,000
+  <button class="btn" onclick="addToCart('TMT Bars', 60000, 'Steel World')">Add to Cart</button>
+
+  <br>HYSD Bars	High Yield	₹45,000 – ₹60,000
+  <button class="btn" onclick="addToCart('HYSD Bars', 52000, 'Steel World')">Add to Cart</button>
+
+  <br>PC Steel Rods	Prestressed Concrete	₹70,000 – ₹80,000
+  <button class="btn" onclick="addToCart('PC Steel Rods', 75000, 'Steel World')">Add to Cart</button>
+
+  <br>Stainless Steel Rods	Corrosion-Resistant	₹90,000 – ₹1,20,000
+  <button class="btn" onclick="addToCart('Stainless Steel Rods', 100000, 'Steel World')">Add to Cart</button>
+
+  <br>Alloy Steel Bars	High-Tensile	₹85,000 – ₹1,00,000
+  <button class="btn" onclick="addToCart('Alloy Steel Bars', 90000, 'Steel World')">Add to Cart</button>
+
+  <br>Carbon Steel Rods	High Durability	₹40,000 – ₹55,000
+  <button class="btn" onclick="addToCart('Carbon Steel Rods', 48000, 'Steel World')">Add to Cart</button>
+
+  <br>Tor Steel Rods	Reinforcement Applications	₹48,000 – ₹65,000
+  <button class="btn" onclick="addToCart('Tor Steel Rods', 55000, 'Steel World')">Add to Cart</button>
+
+  <br>Galvanized Steel Rods	Rust Protection	₹75,000 – ₹90,000
+  <button class="btn" onclick="addToCart('Galvanized Steel Rods', 80000, 'Steel World')">Add to Cart</button>
+
+  <br>Flat Steel Bars	Fabrication Works	₹42,000 – ₹52,000
+  <button class="btn" onclick="addToCart('Flat Steel Bars', 45000, 'Steel World')">Add to Cart</button>
+
+  <br>Cold Rolled Steel Rods	Precision & Finish	₹60,000 – ₹78,000
+  <button class="btn" onclick="addToCart('Cold Rolled Steel Rods', 68000, 'Steel World')">Add to Cart</button>
+
+  <br>Hot Rolled Steel Rods	Basic Structural Use	₹38,000 – ₹50,000
+  <button class="btn" onclick="addToCart('Hot Rolled Steel Rods', 45000, 'Steel World')">Add to Cart</button>
+
+  <br>Note: Prices vary based on type, grade, and retailer. ​<br>
+  steelworld.com
+</p>
+
+<script>
+function isLoggedIn() {
+    return sessionStorage.getItem('isLoggedIn') === 'true';
+}
+
+function addToCart(product, price, brand) {
+    if (!isLoggedIn()) {
+        alert("⚠️ Please login or register before adding items to the cart.");
+        window.location.href = "login1.html";
+        return;
+    }
+
+    const id = product.toLowerCase().replace(/\s+/g, '-');
+    const img = 'img/default.jpg'; // Use actual image path if you have one
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id,
+            name: product,
+            price,
+            brand,
+            quantity: 1,
+            img
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(product + ' (' + brand + ') added to cart at ₹' + price);
+}
+</script>
+
+</body>
+</html>

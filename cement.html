@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cement Types</title>
+    <style>
+         body {
+      font-family: Arial, sans-serif;
+      margin: 100px 20px 60px;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+    }
+
+   nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.3rem 0;
+  }
+}
+
+
+    .product {
+      background-color: #fbf1f1;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .product::first-line {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .btn {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    .btn:hover {
+      background-color: #002244;
+    }
+
+  
+    </style>
+</head>
+<body>
+  <nav>
+  <div class="logo">BuildSource</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="materials.html">Materials</a></li>
+    <li><a href="find.html">Find Experts</a></li>
+    <li><a href="cart.html">Cart</a></li>
+    
+  </ul>
+</nav>  
+<p> 🧱 Ordinary Portland Cement (OPC)
+    <br>
+    Grades: 33, 43, 53<br>
+    Uses: General construction (residential, commercial)<br>
+    Approx. Price (50kg): ₹350 – ₹420<br>
+    Note: Price may vary by grade and region.
+</p>
+<button class="btn" onclick="addToCart('Ordinary Portland Cement', 350, 'OPC')">Add to Cart</button>
+<br>
+
+<p> 🧱 Portland Pozzolana Cement (PPC)
+    <br>
+    Composition: OPC + Fly ash<br>
+    Uses: Dams, marine structures, sewage works<br>
+    Approx. Price (50kg): ₹330 – ₹400<br>
+    Note: Suitable for long-term durability and sustainability.
+</p>
+<button class="btn" onclick="addToCart('Portland Pozzolana Cement', 330, 'PPC')">Add to Cart</button>
+<br>
+
+<p> ⚡ Rapid Hardening Cement
+    <br>
+    Property: Gains strength quickly<br>
+    Uses: Precast works, road repairs<br>
+    Approx. Price (50kg): ₹370 – ₹450<br>
+    Note: Higher early strength compared to OPC.
+</p>
+<button class="btn" onclick="addToCart('Rapid Hardening Cement', 370, 'RHC')">Add to Cart</button>
+<br>
+
+<p> 🌊 Sulphate Resisting Cement
+    <br>
+    Property: Resists sulphate attack<br>
+    Uses: Foundations in coastal/sewage environments<br>
+    Approx. Price (50kg): ₹390 – ₹470<br>
+    Note: Ideal for harsh chemical exposure.
+</p>
+<button class="btn" onclick="addToCart('Sulphate Resisting Cement', 390, 'SRC')">Add to Cart</button>
+<br>
+
+<p> ❄️ Quick Setting Cement
+    <br>
+    Property: Sets fast<br>
+    Uses: Underwater & cold weather construction<br>
+    Approx. Price (50kg): ₹400 – ₹480<br>
+    Note: Ideal where early setting is required.
+</p>
+<button class="btn" onclick="addToCart('Quick Setting Cement', 400, 'QSC')">Add to Cart</button>
+<br>
+
+<p> 🏗️ Low Heat Cement
+    <br>
+    Property: Reduces heat of hydration<br>
+    Uses: Dams, mass concrete structures<br>
+    Approx. Price (50kg): ₹420 – ₹500<br>
+    Note: Prevents thermal cracking in large pours.
+</p>
+<button class="btn" onclick="addToCart('Low Heat Cement', 420, 'LHC')">Add to Cart</button>
+<br>
+
+<p> 🔧 White Cement
+    <br>
+    Property: White finish<br>
+    Uses: Decorative works, flooring, wall putty<br>
+    Approx. Price (50kg): ₹900 – ₹1,100<br>
+    Note: More expensive than OPC due to manufacturing process.
+</p>
+<button class="btn" onclick="addToCart('White Cement', 900, 'Birla White')">Add to Cart</button>
+<br>
+
+<p> 🎨 Colored Cement
+    <br>
+    Property: Pigmented finish<br>
+    Uses: Tiles, paths, murals<br>
+    Approx. Price (50kg): ₹950 – ₹1,200<br>
+    Note: Made by adding pigments to white cement.
+</p>
+<button class="btn" onclick="addToCart('Colored Cement', 950, 'Decorative')">Add to Cart</button>
+<br>
+
+<p> 💧 Hydrophobic Cement
+    <br>
+    Property: Moisture resistant<br>
+    Uses: High rainfall areas, long-term storage<br>
+    Approx. Price (50kg): ₹360 – ₹450<br>
+    Note: Water-repelling additives improve shelf life.
+</p>
+<button class="btn" onclick="addToCart('Hydrophobic Cement', 360, 'Moisture Shield')">Add to Cart</button>
+<br>
+
+<script>
+function isLoggedIn() {
+    // Check if user is logged in using sessionStorage flag
+    return sessionStorage.getItem('isLoggedIn') === 'true';
+}
+
+function addToCart(product, price, brand) {
+    if (!isLoggedIn()) {
+        alert("⚠️ Please login or register before adding items to the cart.");
+        // Redirect to login page
+        window.location.href = "login1.html";
+        return;
+    }
+
+    const id = product.toLowerCase().replace(/\s+/g, '-');
+    const img = 'img/default.jpg'; // Placeholder image path
+
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id,
+            name: product,
+            price,
+            brand,
+            quantity: 1,
+            img
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(product + ' (' + brand + ') added to cart at ₹' + price);
+}
+</script>
+
+</body>
+</html>

@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brick Types</title>
+    <style>
+       body {
+      font-family: Arial, sans-serif;
+      margin: 100px 20px 60px;
+      line-height: 1.6;
+      background-color: #ffffff;
+      color: #333;
+    }
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: #003366;
+  color: white;
+  z-index: 1000;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+nav .logo {
+  font-size: 1.6rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-size: 1rem;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav ul {
+    flex-direction: column;
+    width: 100%;
+    margin-top: 0.5rem;
+  }
+
+  nav ul li {
+    margin: 0.3rem 0;
+  }
+}
+
+    .product {
+      background-color: #fbf1f1;
+      padding: 15px 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .product::first-line {
+      font-weight: bold;
+      font-size: 18px;
+    }
+
+    .btn {
+      background-color: #003366;
+      color: white;
+      border: none;
+      padding: 10px 14px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      margin-top: 10px;
+      margin-bottom: 30px;
+    }
+
+    .btn:hover {
+      background-color: #002244;
+    }
+
+    footer {
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      background-color: #f1f1f1;
+      text-align: center;
+      padding: 10px;
+      box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.1);
+    }
+  </style>
+</head>
+<body>
+   <nav>
+  <div class="logo">BuildSource</div>
+  <ul>
+    <li><a href="index.html">Home</a></li>
+    <li><a href="materials.html">Materials</a></li>
+    <li><a href="find.html">Find Experts</a></li>
+    <li><a href="cart.html">Cart</a></li>
+    
+  </ul>
+</nav>    
+<p> 🧱 Burnt Clay Bricks
+    <br>
+    Type	Use	Approx. Price (1000 pcs)
+    Class I	Load-bearing walls	₹6,000 – ₹7,500
+    Class II	Partition walls	₹5,000 – ₹6,000
+    Note: Most common type of brick used in India. ​
+</p>
+<button class="btn" onclick="addToCart('Burnt Clay Bricks', 6000, 'Local Manufacturer')">Add to Cart</button>
+<br>
+
+<p> 🧱 Fly Ash Bricks
+    <br>
+    Use	Features	Approx. Price (1000 pcs)
+    High-rise buildings	Less water absorption, eco-friendly	₹5,000 – ₹6,500
+    Note: Made from fly ash, suitable for structural applications. ​
+</p>
+<button class="btn" onclick="addToCart('Fly Ash Bricks', 5000, 'EcoBuild')">Add to Cart</button>
+<br>
+
+<p> 🧱 Concrete Bricks
+    <br>
+    Use	Features	Approx. Price (1000 pcs)
+    Compound walls, sheds	Uniform shape, high strength	₹6,000 – ₹8,000
+    Note: Used in modern construction and boundary walls. ​
+</p>
+<button class="btn" onclick="addToCart('Concrete Bricks', 6000, 'BuildStrong')">Add to Cart</button>
+<br>
+
+<p> 🧱 Engineering Bricks
+    <br>
+    Use	Benefits	Approx. Price (1000 pcs)
+    Sewers, damp-prone areas	Low water absorption, high durability	₹8,000 – ₹9,500
+    Note: Used in specialized civil works. ​
+</p>
+<button class="btn" onclick="addToCart('Engineering Bricks', 8000, 'UltraBricks')">Add to Cart</button>
+<br>
+
+<p> 🧱 Fire Bricks (Refractory Bricks)
+    <br>
+    Use	Heat resistance	Approx. Price (100 pcs)
+    Kilns, chimneys, fireplaces	Withstands high temperature	₹4,000 – ₹5,000
+    Note: Made of special clay and fired at high temperatures. ​
+</p>
+<button class="btn" onclick="addToCart('Fire Bricks', 4000, 'ThermoBlock')">Add to Cart</button>
+
+<script>
+function isLoggedIn() {
+    return sessionStorage.getItem('isLoggedIn') === 'true';
+}
+
+function addToCart(product, price, brand) {
+    if (!isLoggedIn()) {
+        alert("⚠️ Please login or register before adding items to the cart.");
+        window.location.href = "login1.html";
+        return;
+    }
+
+    const id = product.toLowerCase().replace(/\s+/g, '-');
+    const img = 'img/default.jpg'; // Use actual image path if you have one
+    const cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+    const existingItem = cart.find(item => item.id === id);
+    if (existingItem) {
+        existingItem.quantity += 1;
+    } else {
+        cart.push({
+            id,
+            name: product,
+            price,
+            brand,
+            quantity: 1,
+            img
+        });
+    }
+
+    localStorage.setItem('cart', JSON.stringify(cart));
+    alert(product + ' (' + brand + ') added to cart at ₹' + price);
+}
+</script>
+
+</body>
+</html>

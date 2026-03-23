@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login / Register - BuildSource</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0; padding: 0;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #f0f4ff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      padding: 20px;
+    }
+    .container {
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.1);
+      width: 350px;
+      overflow: hidden;
+    }
+    .tabs {
+      display: flex;
+      background: #e6ebff;
+    }
+    .tab {
+      flex: 1;
+      text-align: center;
+      padding: 15px 0;
+      cursor: pointer;
+      font-weight: 600;
+      color: #555;
+      user-select: none;
+      transition: background-color 0.3s, color 0.3s;
+    }
+    .tab.active {
+      background-color: #003e8e;
+      color: white;
+      font-weight: 700;
+      box-shadow: inset 0 -4px 0 #007bff;
+    }
+    form {
+      padding: 30px 25px;
+      display: none;
+    }
+    form.active {
+      display: block;
+    }
+    form label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+      color: #333;
+    }
+    form input, form select {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: 1.8px solid #ccc;
+      border-radius: 5px;
+      font-size: 1rem;
+      transition: border-color 0.3s;
+    }
+    form input:focus, form select:focus {
+      border-color: #007bff;
+      outline: none;
+    }
+    .btn {
+      width: 100%;
+      background-color: #003e8e;
+      color: white;
+      border: none;
+      padding: 12px;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+    .btn:hover {
+      background-color: #002f6c;
+    }
+    .message {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #d33;
+      text-align: center;
+    }
+    .switch-message {
+      margin-top: 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+    }
+    .switch-message a {
+      color: #003e8e;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+    }
+    .switch-message a:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="tabs">
+      <div id="loginTab" class="tab active">Login</div>
+      <div id="registerTab" class="tab">Register</div>
+    </div>
+
+    <form id="loginForm" class="active">
+      <label for="loginUserType">I am a:</label>
+      <select id="loginUserType" required>
+        <option value="" disabled selected>Select user type</option>
+        <option value="buyer">Buyer</option>
+        <option value="supplier">Supplier</option>
+      </select>
+
+      <label for="loginEmail">Email:</label>
+      <input type="email" id="loginEmail" placeholder="Enter your email" required />
+
+      <label for="loginPassword">Password:</label>
+      <input type="password" id="loginPassword" placeholder="Enter your password" required />
+
+      <button type="submit" class="btn">Login</button>
+      <div class="message" id="loginMessage"></div>
+
+      <div class="switch-message">
+        New user? <a id="toRegister">Register here</a>
+      </div>
+    </form>
+
+    <form id="registerForm">
+      <label for="registerUserType">I want to register as:</label>
+      <select id="registerUserType" required>
+        <option value="" disabled selected>Select user type</option>
+        <option value="buyer">Buyer</option>
+        <option value="supplier">Supplier</option>
+      </select>
+
+      <div id="supplierFields" style="display: none;">
+        <label for="supplierName">Supplier Name:</label>
+        <input type="text" id="supplierName" placeholder="Enter supplier name" />
+
+        <label for="shopLocation">Shop Location:</label>
+        <input type="text" id="shopLocation" placeholder="Enter shop location" />
+
+        <label for="supplierContact">Contact Number:</label>
+        <input type="tel" id="supplierContact" placeholder="Enter contact number" />
+      </div>
+
+      <label for="registerEmail">Email:</label>
+      <input type="email" id="registerEmail" placeholder="Enter your email" required />
+
+      <label for="registerPassword">Password:</label>
+      <input type="password" id="registerPassword" placeholder="Enter your password" required />
+
+      <label for="registerConfirmPassword">Confirm Password:</label>
+      <input type="password" id="registerConfirmPassword" placeholder="Confirm your password" required />
+
+      <button type="submit" class="btn">Register</button>
+      <div class="message" id="registerMessage"></div>
+
+      <div class="switch-message">
+        Already have an account? <a id="toLogin">Login here</a>
+      </div>
+    </form>
+  </div>
+
+  <script>
+    // Tab switching
+    const loginTab = document.getElementById('loginTab');
+    const registerTab = document.getElementById('registerTab');
+    const loginForm = document.getElementById('loginForm');
+    const registerForm = document.getElementById('registerForm');
+    const toRegisterLink = document.getElementById('toRegister');
+    const toLoginLink = document.getElementById('toLogin');
+
+    function clearMessages() {
+      document.getElementById('loginMessage').innerText = '';
+      document.getElementById('registerMessage').innerText = '';
+    }
+
+    function showLogin() {
+      loginTab.classList.add('active');
+      registerTab.classList.remove('active');
+      loginForm.classList.add('active');
+      registerForm.classList.remove('active');
+      clearMessages();
+    }
+
+    function showRegister() {
+      registerTab.classList.add('active');
+      loginTab.classList.remove('active');
+      registerForm.classList.add('active');
+      loginForm.classList.remove('active');
+      clearMessages();
+    }
+
+    loginTab.addEventListener('click', showLogin);
+    registerTab.addEventListener('click', showRegister);
+    toRegisterLink.addEventListener('click', showRegister);
+    toLoginLink.addEventListener('click', showLogin);
+
+    // Simulated simple user "database"
+    let users = JSON.parse(localStorage.getItem('users')) || [];
+
+    // Supplier fields
+    const supplierFields = document.getElementById('supplierFields');
+    const supplierName = document.getElementById('supplierName');
+    const shopLocation = document.getElementById('shopLocation');
+    const supplierContact = document.getElementById('supplierContact');
+
+    // Show/hide supplier fields based on selection
+    document.getElementById('registerUserType').addEventListener('change', function () {
+      if (this.value === 'supplier') {
+        supplierFields.style.display = 'block';
+      } else {
+        supplierFields.style.display = 'none';
+      }
+    });
+
+    // Register
+    registerForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const userType = document.getElementById('registerUserType').value;
+      const email = document.getElementById('registerEmail').value.trim().toLowerCase();
+      const password = document.getElementById('registerPassword').value;
+      const confirmPassword = document.getElementById('registerConfirmPassword').value;
+      const message = document.getElementById('registerMessage');
+      const isSupplier = userType === 'supplier';
+
+      if (!userType) {
+        message.innerText = 'Please select user type.';
+        return;
+      }
+
+      if (isSupplier) {
+        if (!supplierName.value.trim() || !shopLocation.value.trim() || !supplierContact.value.trim()) {
+          message.innerText = 'Please fill out all supplier details.';
+          return;
+        }
+      }
+
+      if (password !== confirmPassword) {
+        message.innerText = 'Passwords do not match.';
+        return;
+      }
+
+      if (users.find(u => u.email === email)) {
+        message.innerText = 'Email already registered.';
+        return;
+      }
+
+      const userData = {
+        email,
+        password,
+        userType
+      };
+
+      if (isSupplier) {
+        userData.supplierName = supplierName.value.trim();
+        userData.shopLocation = shopLocation.value.trim();
+        userData.contact = supplierContact.value.trim();
+      }
+
+      users.push(userData);
+      localStorage.setItem('users', JSON.stringify(users));
+
+      message.style.color = 'green';
+      message.innerText = 'Registration successful! You can now login.';
+      registerForm.reset();
+      supplierFields.style.display = 'none';
+      showLogin();
+    });
+
+    // Login
+    loginForm.addEventListener('submit', (e) => {
+      e.preventDefault();
+
+      const userType = document.getElementById('loginUserType').value;
+      const email = document.getElementById('loginEmail').value.trim().toLowerCase();
+      const password = document.getElementById('loginPassword').value;
+      const message = document.getElementById('loginMessage');
+
+      if (!userType) {
+        message.innerText = 'Please select user type.';
+        return;
+      }
+
+      const user = users.find(u => u.email === email && u.password === password && u.userType === userType);
+
+      if (!user) {
+        message.innerText = 'Invalid credentials or user type.';
+        return;
+      }
+
+      message.style.color = 'green';
+      message.innerText = 'Login successful! Redirecting...';
+
+      sessionStorage.setItem('isLoggedIn', 'true');
+      sessionStorage.setItem('userEmail', email);
+      sessionStorage.setItem('userType', userType);
+
+      setTimeout(() => {
+        if (userType === 'buyer') {
+          window.location.href = 'index.html';
+        } else if (userType === 'supplier') {
+          window.location.href = 'supplier.html';
+        }
+      }, 1500);
+    });
+  </script>
+</body>
+</html>
